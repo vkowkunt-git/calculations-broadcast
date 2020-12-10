@@ -9,6 +9,10 @@ public class Information {
     private String b;
     private String operation;
 
+    public Information() {
+
+    }
+
     public Information(String user, String a, String b, String operation) {
         this.user = user;
         this.a = a;
