@@ -1,5 +1,7 @@
 package com.calculations.streamer;
 
+import org.springframework.messaging.converter.MessageConversionException;
+import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ public class CalculationsController {
      * @return the top ten results starting from the latest to the oldest
      * @throws Exception
      */
+    @MessageExceptionHandler(MessageConversionException.class)
     @MessageMapping("/information")
     @SendTo("/topic/calculations_subscriber")
     public String calculate(Information information) throws Exception {
